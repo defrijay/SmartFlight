@@ -28,8 +28,10 @@ def show_forecast():
                           yaxis_title='Price (Rp)',
                           height=500)
         st.plotly_chart(fig)
-        st.subheader("Forecast Tabel")
-        st.dataframe(forecast_7.round(2))
+
+        st.subheader("Forecast Table")
+        with st.container():
+            st.dataframe(forecast_7.round(2), use_container_width=True)
 
     except FileNotFoundError:
-        st.error(f"Model for purpose {selected_dest} not available.")
+        st.error(f"Model for destination {selected_dest} not available.")
